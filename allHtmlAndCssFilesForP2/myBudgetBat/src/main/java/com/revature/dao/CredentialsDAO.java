@@ -2,6 +2,8 @@ package com.revature.dao;
 
 import java.util.List;
 
+import com.revature.beans.Credentials;
+
 public interface CredentialsDAO {
 	public List<Credentials> getAllUsers();
 	public Credentials getCredentialsByEmail(String email);

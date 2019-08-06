@@ -2,8 +2,8 @@ package com.revature.service;
 
 import java.util.List;
 
+import com.revature.beans.Credentials;
 import com.revature.beans.User;
-import com.revature.dao.Credentials;
 
 
 public class LoginService {
