@@ -11,7 +11,6 @@
 		beans) to register beans -->
 	<!-- this will mean that the bean definition or bean "recipe" does not show 
 		up in a config file -->
-	<context:component-scan
-		base-package="com.revature"></context:component-scan>
+	<context:component-scan base-package="com.revature"></context:component-scan>
 
 </beans>

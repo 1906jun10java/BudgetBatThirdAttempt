@@ -16,7 +16,7 @@ import com.revature.beans.User;
 import com.revature.service.UserService;
 
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value ="/user")
 public class UserController {
 
 	private UserService userService;
@@ -26,12 +26,12 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@RequestMapping(value = "/allUsers", method = RequestMethod.GET)
+	@RequestMapping(value ="/allUsers", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getUsers() {
 		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/{email}", method = RequestMethod.GET)
+	@RequestMapping(value ="/{email}", method = RequestMethod.GET)
 	public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
 		User f = userService.getUserByEmail(email);
 		if (f == null) {

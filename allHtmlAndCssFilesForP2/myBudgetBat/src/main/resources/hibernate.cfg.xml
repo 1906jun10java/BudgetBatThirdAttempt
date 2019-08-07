@@ -17,7 +17,7 @@
 		<property name="hibernate.show_sql">true</property>
 		<!-- choose whether to start fresh or update existing ddl -->
 		<!-- defaults to update -->
-		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
 		<!-- where are our mapped beans? -->
 		<mapping class="com.revature.beans.User"></mapping>
 		<mapping class="com.revature.beans.Expenses"></mapping>
