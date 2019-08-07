@@ -1,0 +1,103 @@
+DDL requests
+ 
+ Retrieve All Users
+ 
+ @RequestMapping(value="/user",method = RequestMethod.GET)
+ public ResponseEntity<List<User>> allUsers(){
+ List<User> users =  us.getAllUsers();
+ return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+ } 
+ 
+ Retrieve Single user
+ 
+  @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	    public ResponseEntity<User> getUser(@PathVariable("id") long id) {
+	        User user = userService.getUserById(id);
+	        if (user == null) {
+	            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+	        }
+	        return new ResponseEntity<User>(user, HttpStatus.OK);
+	    }
+		
+Register User
+
+@RequestMapping(value = "/register", method = RequestMethod.POST)
+ public ResponseEntity<Void> createUser(@RequestBody User user,    UriComponentsBuilder ucBuilder) {
+	        System.out.println("Creating User " + user.getUsername());
+	 
+	        if (userService.isUserExist(user)) {
+	            System.out.println("A User with name " + user.getUsername() + " already exist");
+	            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+	        }
+	 
+	        userService.saveUser(user);
+	 
+	        HttpHeaders headers = new HttpHeaders();
+	        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
+	        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+	    }
+	@RequestMapping(value = "/register", method = RequestMethod.POST)	
+	 public ResponseEntity<String> addFlashcard(@RequestBody Flashcard flashcard) {
+		ResponseEntity<String> resp = null;
+		try {
+			flashcardService.createFlashcard(flashcard);
+			resp = new ResponseEntity<>("FLASHCARD CREATED SUCCESSFULLY", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			resp = new ResponseEntity<>("FAILED TO CREATE FLASHCARD", HttpStatus.BAD_REQUEST);
+		}
+		return resp;
+	}
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Update a user
+
+@RequestMapping(value="/update", method = RequestMethod.PUT)
+public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
+	        System.out.println("Updating User " + id);
+	         
+	        User currentUser = userService.getUserById(id);
+	         
+	        if (currentUser==null) {
+	            System.out.println("User with id " + id + " not found");
+	            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+	        }
+	 
+	        currentUser.setUsername(user.getUsername());
+	        currentUser.setAddress(user.getAddress());
+	        currentUser.setEmail(user.getEmail());
+	         
+	        userService.updateUser(currentUser);
+	        return new ResponseEntity<User>(currentUser, HttpStatus.OK);
+	    }
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+@RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
+	    public ResponseEntity<User> deleteUser(@PathVariable("id") long id) {
+	        System.out.println("Fetching & Deleting User with id " + id);
+	 
+	        User user = userService.getUeerById(id);
+	        if (user == null) {
+	            System.out.println("Unable to delete. User with id " + id + " not found");
+	            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+	        }
+	 
+	        userService.deleteUserById(id);
+	        return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+	    }
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Existence of user
+ 
+public boolean areYouReal(User u){
+boolean exists = false;
+List<User> users = us.allUsers();
+int i =  0;
+for(User u: users){
+if(get(i).getUserbyemail().equals(u.getEmail()){
+exists =  true;
+}
+}
+return exists;
+}
+get total cost per month in categories arr data with 
+total cost per categorie for one user
+Need to total all expense for a user per category push to pi chart
