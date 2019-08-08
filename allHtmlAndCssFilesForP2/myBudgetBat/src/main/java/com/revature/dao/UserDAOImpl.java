@@ -20,10 +20,11 @@ public class UserDAOImpl implements UserDAO {
 		this.sf= sf;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getAllUsers() {
 		Session s = sf.getCurrentSession();
-		return s.createQuery("from User_Table").getResultList();
+		return s.createQuery("from User").getResultList();
 		
 	}
 

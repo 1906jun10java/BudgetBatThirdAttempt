@@ -11,22 +11,26 @@ import javax.persistence.Table;
 @Entity
 @Table(name="USER_TABLE")
 public class User {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="userSequence")
-	@SequenceGenerator(allocationSize=1, name="userSequence", sequenceName="SQ_USER_PK")
-	@Column(name="USER_ID")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "userSequence")
+	@SequenceGenerator(allocationSize = 1, name = "userSequence", sequenceName = "SQ_USER_PK")
+	@Column(name = "USER_ID")
 	private int userId;
-	
-	@Column(name="FIRSTNAME")
+
+	@Column(name = "FIRSTNAME")
 	private String firstName;
-	@Column(name="LASTNAME")
+	
+	@Column(name = "LASTNAME")
 	private String lastName;
-	@Column(name="PASSWORD")
+	
+	@Column(name = "PASSWORD")
 	private String password;
-	@Column(name="EMAIL")
+	
+	@Column(name = "EMAIL")
 	private String email;
-	@Column(name="INCOME")
+	
+	@Column(name = "INCOME")
 	private int income;
 
 	public User() {
@@ -89,7 +93,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public int getIncome() {
 		return income;
 	}
@@ -101,9 +105,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", password="
-				+ password + ", email=" + email +", income=" + income + "]";
+				+ password + ", email=" + email + ", income=" + income + "]";
 	}
-	
-	
 
 }

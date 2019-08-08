@@ -5,11 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.User;
@@ -26,14 +29,35 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@RequestMapping(value ="/allUsers", method = RequestMethod.GET)
+	@RequestMapping(value="/allUsers", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getUsers() {
 		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
 	}
 
-	@RequestMapping(value ="/{email}", method = RequestMethod.GET)
-	public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
-		User f = userService.getUserByEmail(email);
+	@RequestMapping(value="/email", method = RequestMethod.GET)
+	public ResponseEntity<User> getUserByEmail(@RequestParam(value="email", required = true) String email) {
+		User f = null;
+		
+		f= userService.getUserByEmail(email);
+		
+		if (f != null) {
+			return new ResponseEntity<>(f, HttpStatus.OK);
+		} else {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@ExceptionHandler(MissingServletRequestParameterException.class)
+	public void handleMissingParams(MissingServletRequestParameterException ex) {
+		String name = ex.getParameterName();
+		System.out.println(name + "parameter is missing");
+		
+	}
+	
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
+	public ResponseEntity<User> getUserById(@PathVariable Integer id) {
+		User f = userService.getUserById(id);
 		if (f == null) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		} else {

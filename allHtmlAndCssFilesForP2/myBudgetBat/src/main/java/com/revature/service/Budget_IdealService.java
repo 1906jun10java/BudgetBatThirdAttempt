@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.beans.Budget_Goal;
 import com.revature.beans.Budget_Ideal;
 import com.revature.dao.Budget_IdealDAO;
 
+@Service
 public class Budget_IdealService {
 
 	public static ArrayList<String> UsersIndex = new ArrayList<>();

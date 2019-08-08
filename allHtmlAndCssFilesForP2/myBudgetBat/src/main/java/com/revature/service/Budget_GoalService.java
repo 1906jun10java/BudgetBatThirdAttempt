@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.beans.Budget_Actual;
 import com.revature.beans.Budget_Goal;
 import com.revature.dao.Budget_GoalDAO;
 
+@Service
 public class Budget_GoalService {
 
-	public static ArrayList<String> UsersIndex = new ArrayList<>();
 
 	private Budget_GoalDAO bgDao;
 
