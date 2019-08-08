@@ -1,0 +1,77 @@
+<h3>Create User</h3>
+<div [hidden]="submitted" style="width: 400px; text-align:center" class="loginWidth">
+    <form (ngSubmit)="onSubmit()">
+
+        <div class="imgcontainer">
+
+
+            <img width="300" alt="BuggetBat Logo" src="https://cdn.pixabay.com/photo/2017/10/05/15/35/bat-2819770_960_720.png">
+
+        </div>
+        <div class="container">
+            <div class="form-group">
+                <label for="name">First Name</label>
+                <input type="text" class="form-control" id="firstName" required [(ngModel)]="user.firstname" name="firstname">
+            </div>
+
+            <div class="form-group">
+                <label for="name">Last Name</label>
+                <input type="text" class="form-control" id="lastName" required [(ngModel)]="user.lastname" name="lastname">
+            </div>
+
+            <div class="form-group">
+                <label for="name">Email</label>
+                <input type="text" class="form-control" id="emailId" required [(ngModel)]="user.email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label for="name">Monthly Income</label>
+                <input type="text" class="form-control" id="monthlyIncome" required [(ngModel)]="user.monthlyIncome" name="monthlyIncome">
+            </div>
+        <div style="color:red"><h4>Enter Your Budget Goals Below</h4></div>
+            <div class="form-group">
+                <label for="name">Credit Card Intrest</label>
+                <input type="text" class="form-control" id="credit" required [(ngModel)]="user.credit" name="credit">
+            </div>
+            <div class="form-group">
+                <label for="trans">Transportation</label>
+                <input type="text" class="form-control" id="trans" required [(ngModel)]="user.trans" name="trans">
+            </div>
+            <div class="form-group">
+                <label for="house">Housing</label>
+                <input type="text" class="form-control" id="house" required [(ngModel)]="user.house" name="house">
+            </div>
+            <div class="form-group">
+                <label for="food">Grocery</label>
+                <input type="text" class="form-control" id="food" required [(ngModel)]="user.food" name="food">
+            </div>
+            <div class="form-group">
+                <label for="fun">Entertainment</label>
+                <input type="text" class="form-control" id="fun" required [(ngModel)]="user.fun" name="fun">
+            </div>
+            <div class="form-group">
+                <label for="lux">Luxury</label>
+                <input type="text" class="form-control" id="lux" required [(ngModel)]="user.lux" name="lux">
+            </div>
+            <div class="form-group">
+                <label for="other">Other</label>
+                <input type="text" class="form-control" id="other" required [(ngModel)]="user.other" name="other">
+            </div>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" class="cancelbtn">
+                  <a href="index.html" >Login</a> 
+                </button>
+
+            <!-- <span class="psw">Forgot <a href="#">password?</a></span>-->
+        </div>
+
+    </form>
+</div>
+
+<div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+    <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>
