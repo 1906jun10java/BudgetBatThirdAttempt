@@ -35,16 +35,12 @@ public class UserController {
 	}
 
 	@RequestMapping(value="/email", method = RequestMethod.GET)
-	public ResponseEntity<User> getUserByEmail(@RequestParam(value="email", required = true) String email) {
-		User f = null;
-		
-		f= userService.getUserByEmail(email);
-		
-		if (f != null) {
-			return new ResponseEntity<>(f, HttpStatus.OK);
-		} else {
-			
+	public ResponseEntity<User> getUserByEmail(@RequestParam(value="email") String email) {
+		User f = userService.getUserByEmail(email);
+		if (f == null) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		} else {
+			return new ResponseEntity<>(f, HttpStatus.OK);
 		}
 	}
 	
@@ -52,7 +48,6 @@ public class UserController {
 	public void handleMissingParams(MissingServletRequestParameterException ex) {
 		String name = ex.getParameterName();
 		System.out.println(name + "parameter is missing");
-		
 	}
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)

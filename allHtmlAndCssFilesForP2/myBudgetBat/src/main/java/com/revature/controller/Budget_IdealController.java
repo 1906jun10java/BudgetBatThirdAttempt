@@ -32,7 +32,7 @@ public class Budget_IdealController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Budget_Ideal> getBudget_ActualById(@PathVariable int id) {
+	public ResponseEntity<Budget_Ideal> getBudget_ActualById(@PathVariable Integer id) {
 		Budget_Ideal bg = biService.getBudget_IdealById(id);
 		if (bg == null) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

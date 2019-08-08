@@ -32,7 +32,7 @@ public class Budget_GoalController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Budget_Goal> getBudget_ActualById(@PathVariable int id) {
+	public ResponseEntity<Budget_Goal> getBudget_ActualById(@PathVariable Integer id) {
 		Budget_Goal bg = bgService.getBudget_GoalById(id);
 		if (bg == null) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
