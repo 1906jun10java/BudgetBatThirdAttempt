@@ -46,7 +46,7 @@ public class Budget_ActualDAOImpl implements Budget_ActualDAO {
 	}
 
 	@Override
-	public void removeBudget_Actual(Budget_Actual ba) {
+	public void deleteBudget_Actual(Budget_Actual ba) {
 		sf.getCurrentSession().delete(ba);
 		
 	}

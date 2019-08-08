@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,8 +41,32 @@ public class Budget_IdealController {
 			return new ResponseEntity<>(bg, HttpStatus.OK);
 		}
 	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<String> updateBudget_Ideal(@RequestBody Budget_Ideal bi) {
+		ResponseEntity<String> resp = null;
+		try {
+			biService.updateBudget_Ideal(bi);
+			resp = new ResponseEntity<>("BUDGET_IDEAL UPDATED SUCCESSFULLY", HttpStatus.OK);
+		} catch (Exception e) {
+			resp = new ResponseEntity<>("BUDGET_IDEAL FAILED TO UPDATE", HttpStatus.BAD_REQUEST);
+		}
+		return resp;
+	}
+	
+	@PutMapping("/delete")
+	public ResponseEntity<String> deleteBudget_Ideal(@RequestBody Budget_Ideal bi) {
+		ResponseEntity<String> resp = null;
+		try {
+			biService.deleteBudget_Ideal(bi);
+			resp = new ResponseEntity<>("BUDGET_IDEAL DELETED SUCCESSFULLY", HttpStatus.OK);
+		} catch (Exception e) {
+			resp = new ResponseEntity<>("FAILED TO DELETE BUDGET_IDEAL", HttpStatus.BAD_REQUEST);
+		}
+		return resp;
+	}
 
-	@PostMapping // we could also do RequestMapping with RequestMethod.POST
+	@PostMapping("/create") 
 	public ResponseEntity<String> createBudget_Ideal(@RequestBody Budget_Ideal bi) {
 		ResponseEntity<String> resp = null;
 		try {

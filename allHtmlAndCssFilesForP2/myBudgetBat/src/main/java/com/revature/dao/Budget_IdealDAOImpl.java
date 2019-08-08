@@ -46,7 +46,7 @@ public class Budget_IdealDAOImpl implements Budget_IdealDAO {
 	}
 
 	@Override
-	public void removeBudget_Ideal(Budget_Ideal bi) {
+	public void deleteBudget_Ideal(Budget_Ideal bi) {
 		sf.getCurrentSession().delete(bi);
 		
 	}

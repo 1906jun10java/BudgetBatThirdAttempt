@@ -10,6 +10,6 @@ public interface Budget_GoalDAO {
 	public Budget_Goal getBudget_GoalById(int id);
 	public void createBudget_Goal(Budget_Goal bg);
 	public void updateBudget_Goal(Budget_Goal bg);
-	public void removeBudget_Goal(Budget_Goal bg);
+	public void deleteBudget_Goal(Budget_Goal bg);
 
 }

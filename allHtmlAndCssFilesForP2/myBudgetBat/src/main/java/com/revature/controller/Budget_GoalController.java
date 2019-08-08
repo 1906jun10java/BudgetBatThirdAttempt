@@ -7,11 +7,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.beans.Budget_Actual;
 import com.revature.beans.Budget_Goal;
 import com.revature.service.Budget_GoalService;
 
@@ -40,8 +42,32 @@ public class Budget_GoalController {
 			return new ResponseEntity<>(bg, HttpStatus.OK);
 		}
 	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<String> updateBudget_Goal(@RequestBody Budget_Goal bg) {
+		ResponseEntity<String> resp = null;
+		try {
+			bgService.updateBudget_Goal(bg);
+			resp = new ResponseEntity<>("BUDGET_GOAL UPDATED SUCCESSFULLY", HttpStatus.OK);
+		} catch (Exception e) {
+			resp = new ResponseEntity<>("FAILED TO UPDATE BUDGET_GOAL", HttpStatus.BAD_REQUEST);
+		}
+		return resp;
+	}
+	
+	@PutMapping("/delete")
+	public ResponseEntity<String> deleteBudget_Goal(@RequestBody Budget_Goal bg) {
+		ResponseEntity<String> resp = null;
+		try {
+			bgService.deleteBudget_Goal(bg);
+			resp = new ResponseEntity<>("BUDGET_GOAL DELETED SUCCESSFULLY", HttpStatus.OK);
+		} catch (Exception e) {
+			resp = new ResponseEntity<>("FAILED TO DELETE BUDGET_GOAL", HttpStatus.BAD_REQUEST);
+		}
+		return resp;
+	}
 
-	@PostMapping // we could also do RequestMapping with RequestMethod.POST
+	@PostMapping 
 	public ResponseEntity<String> createBudget_Goal(@RequestBody Budget_Goal bg) {
 		ResponseEntity<String> resp = null;
 		try {

@@ -10,6 +10,6 @@ public interface Budget_ActualDAO {
 	public Budget_Actual getBudget_ActualById(int id);
 	public void createBudget_Actual(Budget_Actual ba);
 	public void updateBudget_Actual(Budget_Actual ba);
-	public void removeBudget_Actual(Budget_Actual ba);
+	public void deleteBudget_Actual(Budget_Actual ba);
 
 }

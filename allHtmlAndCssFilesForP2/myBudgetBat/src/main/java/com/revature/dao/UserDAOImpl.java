@@ -53,9 +53,9 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void removeUser(User u) {
+	public void deleteUser(User u) {
 		sf.getCurrentSession().delete(u);
 		
 	}
-
+	
 }

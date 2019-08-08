@@ -36,5 +36,13 @@ public class Budget_GoalService {
 	public void createBudget_Goal(Budget_Goal bg) {
 		bgDao.createBudget_Goal(bg);
 	}
+	
+	public void updateBudget_Goal(Budget_Goal bg) {
+		bgDao.updateBudget_Goal(bg);
+	}
+	
+	public void deleteBudget_Goal(Budget_Goal bg) {
+		bgDao.deleteBudget_Goal(bg);
+	}
 
 }

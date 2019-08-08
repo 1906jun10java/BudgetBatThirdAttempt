@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -35,7 +36,7 @@ public class UserController {
 		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
 	}
 
-	@RequestMapping(value="/email", method = RequestMethod.GET)
+	@GetMapping("/email")
 	public ResponseEntity<User> getUserByEmail(@RequestParam(value="email") String email) {
 		User f = userService.getUserByEmail(email);
 		if (f == null) {
@@ -68,12 +69,24 @@ public class UserController {
 			userService.updateUser(user);
 			resp = new ResponseEntity<>("USER UPDATED SUCCESSFULLY", HttpStatus.OK);
 		} catch (Exception e) {
-			resp = new ResponseEntity<>("FAILED TO UPDATED", HttpStatus.BAD_REQUEST);
+			resp = new ResponseEntity<>("FAILED TO UPDATE", HttpStatus.BAD_REQUEST);
 		}
 		return resp;
 	}
 	
-	@PostMapping // we could also do RequestMapping with RequestMethod.POST
+	@PutMapping("/delete")
+	public ResponseEntity<String> deleteUser(@RequestBody User user) {
+		ResponseEntity<String> resp = null;
+		try {
+			userService.deleteUser(user);
+			resp = new ResponseEntity<>("USER DELETED SUCCESSFULLY", HttpStatus.OK);
+		} catch (Exception e) {
+			resp = new ResponseEntity<>("FAILED TO DELETE USER", HttpStatus.BAD_REQUEST);
+		}
+		return resp;
+	}
+	
+	@PostMapping("/create") 
 	public ResponseEntity<String> createUser(@RequestBody User user) {
 		ResponseEntity<String> resp = null;
 		try {

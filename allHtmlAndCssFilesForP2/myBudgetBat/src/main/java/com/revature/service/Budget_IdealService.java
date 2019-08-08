@@ -37,5 +37,13 @@ public class Budget_IdealService {
 	public void createBudget_Ideal(Budget_Ideal bi) {
 		biDao.createBudget_Ideal(bi);
 	}
+	
+	public void updateBudget_Ideal(Budget_Ideal bi) {
+		biDao.updateBudget_Ideal(bi);
+	}
+	
+	public void deleteBudget_Ideal(Budget_Ideal bi) {
+		biDao.deleteBudget_Ideal(bi);
+	}
 
 }

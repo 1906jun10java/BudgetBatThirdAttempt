@@ -10,6 +10,6 @@ public interface Budget_IdealDAO {
 	public Budget_Ideal getBudget_IdealById(int id);
 	public void createBudget_Ideal(Budget_Ideal bi);
 	public void updateBudget_Ideal(Budget_Ideal bi);
-	public void removeBudget_Ideal(Budget_Ideal bi);
+	public void deleteBudget_Ideal(Budget_Ideal bi);
 
 }

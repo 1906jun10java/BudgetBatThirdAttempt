@@ -46,7 +46,7 @@ public class Budget_GoalDAOImpl implements Budget_GoalDAO {
 	}
 
 	@Override
-	public void removeBudget_Goal(Budget_Goal bg) {
+	public void deleteBudget_Goal(Budget_Goal bg) {
 		sf.getCurrentSession().delete(bg);
 		
 	}
