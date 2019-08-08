@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.beans.Budget_Actual;
 import com.revature.beans.Budget_Goal;
 import com.revature.service.Budget_GoalService;
 
@@ -67,7 +66,7 @@ public class Budget_GoalController {
 		return resp;
 	}
 
-	@PostMapping 
+	@PostMapping("/create")
 	public ResponseEntity<String> createBudget_Goal(@RequestBody Budget_Goal bg) {
 		ResponseEntity<String> resp = null;
 		try {

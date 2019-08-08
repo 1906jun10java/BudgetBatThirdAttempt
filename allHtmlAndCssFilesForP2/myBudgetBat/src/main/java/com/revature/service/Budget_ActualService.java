@@ -38,5 +38,9 @@ public class Budget_ActualService {
 	public void updateBudget_Actual(Budget_Actual ba) {
 		baDao.updateBudget_Actual(ba);
 	}
+	
+	public void deleteBudget_Actual(Budget_Actual ba) {
+		baDao.deleteBudget_Actual(ba);
+	}
 
 }

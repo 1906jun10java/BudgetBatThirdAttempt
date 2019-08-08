@@ -21,10 +21,8 @@ public class Budget_Ideal {
 	@SequenceGenerator(allocationSize=1, name="budgetISequence", sequenceName="SQ_BUDGET_I_PK")
 	@Column(name="BUDGET_I_ID")
 	private int budgetIId;
-	
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
-	@JoinColumn(name="USER_ID")
-	private User userId;
+
+	private int userId;
 	
 	@Column(name="CREDIT_CARD_INTEREST")
 	private double ccInterest;
@@ -51,7 +49,7 @@ public class Budget_Ideal {
 		super();
 	}
 
-	public Budget_Ideal(User userId, double ccInterest, double transportation, double housing, double grocery,
+	public Budget_Ideal(int userId, double ccInterest, double transportation, double housing, double grocery,
 			double entertainment, double luxury, double other) {
 		super();
 		this.userId = userId;
@@ -64,7 +62,7 @@ public class Budget_Ideal {
 		this.other = other;
 	}
 
-	public Budget_Ideal(int budgetIId, User userId, double ccInterest, double transportation, double housing,
+	public Budget_Ideal(int budgetIId, int userId, double ccInterest, double transportation, double housing,
 			double grocery, double entertainment, double luxury, double other) {
 		super();
 		this.budgetIId = budgetIId;
@@ -86,11 +84,11 @@ public class Budget_Ideal {
 		this.budgetIId = budgetIId;
 	}
 
-	public User getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(User userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
@@ -149,7 +147,7 @@ public class Budget_Ideal {
 	public void setOther(double other) {
 		this.other = other;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -170,7 +168,7 @@ public class Budget_Ideal {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(transportation);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + userId;
 		return result;
 	}
 
@@ -199,10 +197,7 @@ public class Budget_Ideal {
 			return false;
 		if (Double.doubleToLongBits(transportation) != Double.doubleToLongBits(other.transportation))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
-				return false;
-		} else if (!userId.equals(other.userId))
+		if (userId != other.userId)
 			return false;
 		return true;
 	}
