@@ -41,5 +41,9 @@ public class UserService {
 	public void createUser(User user) {
 		userDao.createUser(user);
 	}
+	
+	public void updateUser(User user) {
+		userDao.updateUser(user);
+	}
 
 }

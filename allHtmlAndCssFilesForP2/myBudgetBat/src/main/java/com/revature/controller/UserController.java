@@ -9,6 +9,7 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -59,7 +60,19 @@ public class UserController {
 			return new ResponseEntity<>(f, HttpStatus.OK);
 		}
 	}
-
+	
+	@PutMapping("/update")
+	public ResponseEntity<String> updateUser(@RequestBody User user) {
+		ResponseEntity<String> resp = null;
+		try {
+			userService.updateUser(user);
+			resp = new ResponseEntity<>("USER UPDATED SUCCESSFULLY", HttpStatus.OK);
+		} catch (Exception e) {
+			resp = new ResponseEntity<>("FAILED TO UPDATED", HttpStatus.BAD_REQUEST);
+		}
+		return resp;
+	}
+	
 	@PostMapping // we could also do RequestMapping with RequestMethod.POST
 	public ResponseEntity<String> createUser(@RequestBody User user) {
 		ResponseEntity<String> resp = null;
