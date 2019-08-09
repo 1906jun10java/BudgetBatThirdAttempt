@@ -22,7 +22,7 @@ public class Budget_Goal {
 	@Column(name="BUDGET_G_ID")
 	private int budgetGId;
 	
-	
+	@Column(name="USER_ID")
 	private int userId;
 	
 	@Column(name="CREDIT_CARD_INTEREST")

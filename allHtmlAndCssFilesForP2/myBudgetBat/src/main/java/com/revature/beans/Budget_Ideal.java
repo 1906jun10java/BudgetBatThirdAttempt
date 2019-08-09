@@ -22,6 +22,7 @@ public class Budget_Ideal {
 	@Column(name="BUDGET_I_ID")
 	private int budgetIId;
 
+	@Column(name="USER_ID")
 	private int userId;
 	
 	@Column(name="CREDIT_CARD_INTEREST")
